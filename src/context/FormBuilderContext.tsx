@@ -1,21 +1,20 @@
-// src/context/FormBuilderContext.tsx
-import { createContext, useContext, useState } from "react";
-import type { ReactNode } from "react";
+import React, { createContext, useContext, useState } from "react";
 import type { FormField } from "../types/form";
 
-type FormBuilderContextType = {
-  fields: FormField[];
+interface FormBuilderContextProps {
+  fields: FormField[]; // ✅ Added this
   addField: (field: FormField) => void;
   updateField: (id: string, updatedField: Partial<FormField>) => void;
   removeField: (id: string) => void;
-  setFields: (fields: FormField[]) => void;
-};
+}
 
-const FormBuilderContext = createContext<FormBuilderContextType | undefined>(
+const FormBuilderContext = createContext<FormBuilderContextProps | undefined>(
   undefined
 );
 
-export const FormBuilderProvider = ({ children }: { children: ReactNode }) => {
+export const FormBuilderProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [fields, setFields] = useState<FormField[]>([]);
 
   const addField = (field: FormField) => {
@@ -24,19 +23,17 @@ export const FormBuilderProvider = ({ children }: { children: ReactNode }) => {
 
   const updateField = (id: string, updatedField: Partial<FormField>) => {
     setFields((prev) =>
-      prev.map((field) =>
-        field.id === id ? { ...field, ...updatedField } : field
-      )
+      prev.map((f) => (f.id === id ? { ...f, ...updatedField } : f))
     );
   };
 
   const removeField = (id: string) => {
-    setFields((prev) => prev.filter((field) => field.id !== id));
+    setFields((prev) => prev.filter((f) => f.id !== id));
   };
 
   return (
     <FormBuilderContext.Provider
-      value={{ fields, addField, updateField, removeField, setFields }}
+      value={{ fields, addField, updateField, removeField }}
     >
       {children}
     </FormBuilderContext.Provider>
@@ -45,8 +42,7 @@ export const FormBuilderProvider = ({ children }: { children: ReactNode }) => {
 
 export const useFormBuilder = () => {
   const context = useContext(FormBuilderContext);
-  if (!context) {
-    throw new Error("useFormBuilder must be used within a FormBuilderProvider");
-  }
+  if (!context)
+    throw new Error("useFormBuilder must be used within FormBuilderProvider");
   return context;
 };

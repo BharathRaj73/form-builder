@@ -1,0 +1,91 @@
+.myforms-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.myforms-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.myforms-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.myforms-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  font-weight: 500;
+  color: #444;
+}
+
+.myforms-list li:last-child {
+  border-bottom: none;
+}
+
+.myforms-list li > div {
+  display: flex;
+  gap: 10px;
+}
+
+.myforms-list button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.myforms-list button:hover {
+  background-color: #084a9e;
+}
+
+.btn-delete {
+  background-color: #dc3545 !important;
+}
+
+.btn-delete:hover {
+  background-color: #a71d2a;
+}
+
+.btn-create {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-create:hover {
+  background-color: #1e7e34;
+}
+
+.no-forms {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  margin-top: 40px;
+}

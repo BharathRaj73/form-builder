@@ -1,9 +1,7 @@
-// src/components/FieldEditor.tsx
 import React from "react";
 import {
   Box,
   TextField,
-  Select,
   MenuItem,
   Checkbox,
   FormControlLabel,
@@ -43,7 +41,9 @@ const FieldEditor: React.FC<FieldEditorProps> = ({ field }) => {
           label="Field Type"
           select
           value={field.type}
-          onChange={(e) => updateField(field.id, { type: e.target.value })}
+          onChange={(e) =>
+            updateField(field.id, { type: e.target.value as FormField["type"] })
+          }
           fullWidth
         >
           <MenuItem value="text">Text</MenuItem>
@@ -69,7 +69,7 @@ const FieldEditor: React.FC<FieldEditorProps> = ({ field }) => {
 
       <TextField
         label="Default Value"
-        value={field.defaultValue}
+        value={field.defaultValue || ""}
         onChange={(e) =>
           updateField(field.id, { defaultValue: e.target.value })
         }

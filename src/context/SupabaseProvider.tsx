@@ -1,4 +1,3 @@
-// src/context/SupabaseProvider.tsx
 import { createContext, useContext } from "react";
 import { supabase } from "../utils/supabaseClient";
 
