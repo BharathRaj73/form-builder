@@ -29,8 +29,7 @@ cd form-builder
 
 # Install dependencies
 npm install
-# or
-yarn install
+
 
 # Start development server
 npm run dev
